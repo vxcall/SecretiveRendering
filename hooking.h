@@ -2,10 +2,15 @@
 #include "MinHook.h"
 #include <d3d9.h>
 #include <iostream>
+#include <vector>
+#include "findpattern.h"
+#include "debugMessage.h"
 
 namespace hooks {
+    void Initialize();
+
     template<typename T>
-    void Hook(void* pTarget, void* pDetour, T** ppOriginal)
+    inline void Hook(void* pTarget, void* pDetour, T** ppOriginal)
     {
         MH_STATUS creationStatus = MH_CreateHook(pTarget, pDetour, reinterpret_cast<LPVOID*>(ppOriginal));
         if (creationStatus != MH_OK)
@@ -14,6 +19,5 @@ namespace hooks {
         if (enableStatus != MH_OK)
             std::cout << "MH_EnableHook() failed" << std::endl;
     }
-
-    void initialize();
+    void Uninitialize();
 }

@@ -1,21 +1,21 @@
 #include "dllmain.h"
-#include <Windows.h>
-#include <iostream>
-#include "debugMessage.h"
-#include "hooking.h"
-#include "findpattern.h"
+
+
 
 void Detach()
 {
     FREECONSOLE()
+    hooks::Uninitialize();
 }
 
 DWORD WINAPI fMain(LPVOID lpParameter)
 {
     ALLOCCONSOLE()
-    hooks::initialize();
+    hooks::Initialize();
     while (true)
     {
+        if (GetAsyncKeyState(VK_DELETE) & 1)
+            break;
         Sleep(100);
     }
     FreeLibraryAndExitThread(static_cast<HMODULE>(lpParameter), EXIT_SUCCESS);

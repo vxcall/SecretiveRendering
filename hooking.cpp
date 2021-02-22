@@ -1,9 +1,7 @@
 #include "hooking.h"
-#include <Windows.h>
-#include <d3d9.h>
-#include <iostream>
-#include "findpattern.h"
-#include "debugMessage.h"
+
+#define REGISTER_HOOK(pTarget, pDetour, ppOriginal) Hook(pTarget, pDetour, ppOriginal); \
+originalFunctions.push_back(pTarget);
 
 // Defining custom types of target function respectively.
 using tPresent = HRESULT(STDMETHODCALLTYPE*) (IDirect3DDevice9*, const RECT*, const RECT*, HWND, const RGNDATA*);
@@ -14,8 +12,8 @@ tPresent oPresent = nullptr;
 tReset oReset = nullptr;
 
 HRESULT STDMETHODCALLTYPE hkPresent(IDirect3DDevice9* thisptr, const RECT* src, const RECT* dest, HWND wnd_override, const RGNDATA* dirty_region) {
-    D3DCOLOR color = D3DCOLOR_XRGB(255, 0, 0);
-    D3DRECT position = {100, 100, 200, 200};
+    D3DCOLOR color = D3DCOLOR_XRGB(121, 97, 247);
+    D3DRECT position = {600, 300, 700, 400};
 
     thisptr->Clear(1, &position, D3DCLEAR_TARGET | D3DCLEAR_TARGET, color, 0, 0);
     return oPresent(thisptr, src, dest, wnd_override, dirty_region);
@@ -25,7 +23,10 @@ HRESULT STDMETHODCALLTYPE hkReset(IDirect3DDevice9* thisptr, D3DPRESENT_PARAMETE
     return oReset(thisptr, params);
 }
 
-void hooks::initialize() {
+std::vector<void*> originalFunctions;
+
+void hooks::Initialize()
+{
     try {
         if (MH_Initialize() != MH_OK)
         {
@@ -37,12 +38,21 @@ void hooks::initialize() {
         LOGHEX("OriginalPresentAddress", originalPresentAddress)
         LOGHEX("OriginalResetAddress", originalResetAddress)
 
-        Hook(**reinterpret_cast<void***>(originalPresentAddress), &hkPresent, &oPresent); // Actual hooking. See Hook function in the header file.
-        Hook(**reinterpret_cast<void***>(originalResetAddress), &hkReset, &oReset);
+        // Macro in order for hooking and saving original function.
+        REGISTER_HOOK(**reinterpret_cast<void***>(originalPresentAddress), &hkPresent, &oPresent);
+        REGISTER_HOOK(**reinterpret_cast<void***>(originalResetAddress), &hkReset, &oReset);
 
     } catch (const std::exception &ex) {
         MessageBoxA(nullptr, ex.what(), "Error", 0);
     }
 }
 
+void hooks::Uninitialize()
+{
+    for (auto& org : originalFunctions)
+    {
+        MH_DisableHook(org);
+    }
+    MH_Uninitialize();
+}
 
