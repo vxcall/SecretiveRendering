@@ -6,6 +6,8 @@
 
 # :neckbeard: Steam-overlay-abusion
 
+**Please :star:star this project, it'll be a huge help for me =)**
+
 I've gotten a vivid inspiration when I first take a look at **[gameoverlayrenderer-imgui-dx9](https://github.com/aixxe/gameoverlayrenderer-imgui-dx9)**, 
 so I decided to replicate this repository in alternative and simpler way which uses Minhook within the hooking process.
 
