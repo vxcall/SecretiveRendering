@@ -2,7 +2,7 @@
 ![cmake](https://img.shields.io/badge/cmake-3.16-yellow)
 ![License](http://img.shields.io/badge/license-MIT-yellowgreen.svg?style=flat)
 
-![header](https://user-images.githubusercontent.com/33578715/108806963-19255a80-75de-11eb-9282-2259ea5efa55.png)
+![header](https://user-images.githubusercontent.com/33578715/108846417-7ee30800-7619-11eb-9022-a98085ccfbea.png)
 
 # :neckbeard: Steam-overlay-abusion
 
