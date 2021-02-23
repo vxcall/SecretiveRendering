@@ -3,8 +3,9 @@
 #include <d3d9.h>
 #include <iostream>
 #include <vector>
-#include "findpattern.h"
-#include "debugMessage.h"
+#include "../findpattern.h"
+#include "../debugMessage.h"
+#include "imguiHook.h"
 
 namespace hooks {
     void Initialize();

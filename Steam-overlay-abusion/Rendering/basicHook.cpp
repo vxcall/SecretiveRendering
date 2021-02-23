@@ -1,4 +1,4 @@
-#include "hooking.h"
+#include "basicHook.h"
 
 #define REGISTER_HOOK(pTarget, pDetour, ppOriginal) Hook(pTarget, pDetour, ppOriginal); \
 originalFunctions.push_back(pTarget);
@@ -12,10 +12,23 @@ tPresent oPresent = nullptr;
 tReset oReset = nullptr;
 
 HRESULT STDMETHODCALLTYPE hkPresent(IDirect3DDevice9* thisptr, const RECT* src, const RECT* dest, HWND wnd_override, const RGNDATA* dirty_region) {
-    D3DCOLOR color = D3DCOLOR_XRGB(121, 97, 247);
-    D3DRECT position = {600, 300, 700, 400};
+    static bool isInitialised = false;
+    if (!isInitialised) {
+        imguiHook::InitializeImgui(thisptr);
+        isInitialised = true;
+    } else {
+        ImGui_ImplDX9_NewFrame();
+        ImGui_ImplWin32_NewFrame();
+        ImGui::NewFrame();
+        ImGui::Begin("Hello, world!");
 
-    thisptr->Clear(1, &position, D3DCLEAR_TARGET | D3DCLEAR_TARGET, color, 0, 0);
+        ImGui::Text("Hello, world!");
+
+        ImGui::End();
+        ImGui::EndFrame();
+        ImGui::Render();
+        ImGui_ImplDX9_RenderDrawData(ImGui::GetDrawData());
+    }
     return oPresent(thisptr, src, dest, wnd_override, dirty_region);
 }
 
