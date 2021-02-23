@@ -29,9 +29,8 @@ void hooks::Initialize()
 {
     try {
         if (MH_Initialize() != MH_OK)
-        {
             throw std::exception("MH_Initialize failed!");
-        }
+
         // Getting the original address of Present and Reset function
         uintptr_t originalPresentAddress = FindPattern("gameoverlayrenderer.dll", "68 ? ? ? ? 68 ? ? ? ? FF 76 44") + 0x1;
         uintptr_t originalResetAddress = FindPattern("gameoverlayrenderer.dll", "FF 15 ? ? ? ? 8B F8 85 FF 78 18 85 F6 74 14 FF 75 E0 8B CE 53 FF 75 EC E8 ? ? ? ?") + 2;
@@ -39,8 +38,8 @@ void hooks::Initialize()
         LOGHEX("OriginalResetAddress", originalResetAddress)
 
         // Macro in order for hooking and saving original function.
-        REGISTER_HOOK(**reinterpret_cast<void***>(originalPresentAddress), &hkPresent, &oPresent);
-        REGISTER_HOOK(**reinterpret_cast<void***>(originalResetAddress), &hkReset, &oReset);
+        REGISTER_HOOK(**reinterpret_cast<void***>(originalPresentAddress), &hkPresent, &oPresent)
+        REGISTER_HOOK(**reinterpret_cast<void***>(originalResetAddress), &hkReset, &oReset)
 
     } catch (const std::exception &ex) {
         MessageBoxA(nullptr, ex.what(), "Error", 0);
