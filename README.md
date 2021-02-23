@@ -15,7 +15,13 @@ and some of the syntax and libraries it uses are no longer valid, that's also th
 Basically, this technology abuses overlay feature in Steam and it allows you to render anything in completely invisible state on your stream.
 This way you can stream any hacky stuff without letting viewers know that you're cheating.
 
-![image](https://user-images.githubusercontent.com/33578715/108907625-4a913b00-765d-11eb-8019-002728da5225.png)
+
+# How it looks
+
+**LEFT**: OBS window | **RIGHT**: actual game window
+
+You don't see hack menu at all on OBS, do you?
+![image](https://user-images.githubusercontent.com/33578715/108908093-e15df780-765d-11eb-9bc4-268f21f55290.png)
 
 # TODO
 - [x] Render hack menu with imgui
