@@ -20,9 +20,9 @@ HRESULT STDMETHODCALLTYPE hkPresent(IDirect3DDevice9* thisptr, const RECT* src, 
         ImGui_ImplDX9_NewFrame();
         ImGui_ImplWin32_NewFrame();
         ImGui::NewFrame();
-        ImGui::Begin("Hello, world!");
+        ImGui::Begin("Hack menu");
 
-        ImGui::Text("Hello, world!");
+        ImGui::Text("Hello from hidden menu, this message won't be recognized by anyone but you.");
 
         ImGui::End();
         ImGui::EndFrame();

@@ -8,13 +8,14 @@
 
 **Please :star:star this project, it'll be a huge help for me =)**
 
-I've gotten a vivid inspiration when I first take a look at **[gameoverlayrenderer-imgui-dx9](https://github.com/aixxe/gameoverlayrenderer-imgui-dx9)**, 
-so I decided to replicate this repository in alternative and simpler way which uses Minhook within the hooking process.
+Recently, I've gotten a vivid inspiration when I first take a look at **[gameoverlayrenderer-imgui-dx9](https://github.com/aixxe/gameoverlayrenderer-imgui-dx9)**, 
+so I decided to replicate this repository in alternative and simpler way which uses Minhook within the hooking process. In addition, the original repository made 4 years prior from now,
+and some of the syntax and libraries it uses are no longer valid, that's also the reason I made this.
 
 Basically, this technology abuses overlay feature in Steam and it allows you to render anything in completely invisible state on your stream.
 This way you can stream any hacky stuff without letting viewers know that you're cheating.
 
-![image](https://user-images.githubusercontent.com/33578715/108758174-be601480-7585-11eb-9a6d-4d7088b6b47c.png)
+![image](https://user-images.githubusercontent.com/33578715/108907625-4a913b00-765d-11eb-8019-002728da5225.png)
 
 # TODO
-- [ ] Render more practical stuff with imgui
+- [x] Render hack menu with imgui
