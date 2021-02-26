@@ -13,6 +13,7 @@ namespace hooks {
     template<typename T>
     inline void Hook(void* pTarget, void* pDetour, T** ppOriginal)
     {
+        // Basically MH_CreateHook function require the base address of the target function.
         MH_STATUS creationStatus = MH_CreateHook(pTarget, pDetour, reinterpret_cast<LPVOID*>(ppOriginal));
         if (creationStatus != MH_OK)
             std::cout << "MH_CreateHook() failed" << std::endl;

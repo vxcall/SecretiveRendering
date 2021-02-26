@@ -33,6 +33,8 @@ HRESULT STDMETHODCALLTYPE hkPresent(IDirect3DDevice9* thisptr, const RECT* src, 
 }
 
 HRESULT STDMETHODCALLTYPE hkReset(IDirect3DDevice9* thisptr, D3DPRESENT_PARAMETERS* params) {
+    ImGui_ImplDX9_InvalidateDeviceObjects();
+    ImGui_ImplDX9_CreateDeviceObjects();
     return oReset(thisptr, params);
 }
 

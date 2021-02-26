@@ -4,7 +4,7 @@
 
 ![header](https://user-images.githubusercontent.com/33578715/109074945-6b2bc480-7733-11eb-8dcf-d2cf5eaee9c7.png)
 
-# :neckbeard: SecretiveRendering
+# ![a](https://svgshare.com/s/USC) SecretiveRendering
 
 **Please :star:star this project, it'll be a huge help for me =)**
 
