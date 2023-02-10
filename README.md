@@ -2,17 +2,13 @@
 ![cmake](https://img.shields.io/badge/cmake-3.16-yellow)
 ![License](http://img.shields.io/badge/license-MIT-yellowgreen.svg?style=flat)
 
-![header](https://user-images.githubusercontent.com/33578715/109074945-6b2bc480-7733-11eb-8dcf-d2cf5eaee9c7.png)
-
 # ![icon](https://img.icons8.com/clouds/40/000000/steam.png) SecretiveRendering
 
-**Please :star:star this project, it'll be a huge help for me =)**
-
-Recently, I've gotten a vivid inspiration when I first take a look at **[gameoverlayrenderer-imgui-dx9](https://github.com/aixxe/gameoverlayrenderer-imgui-dx9)**, 
-so I decided to replicate this repository in alternative and simpler way which uses Minhook within the hooking process. In addition, the original repository made 4 years prior from now,
+Recently, I've read [an article](https://aixxe.net/2017/09/steam-overlay-rendering) and wanted to replicate in alternative and simpler way which uses Minhook within the hooking process. In addition, the original repository made 4 years prior from now,
 and some of the syntax and libraries it uses are no longer valid, that's also the reason I made this.
+all credits goes to big brain [@aixxe](https://github.com/aixxe) and [article](https://aixxe.net/2017/09/steam-overlay-rendering), not me.
 
-Basically, this technology abuses overlay feature in Steam and it allows you to render anything in completely invisible state on your stream.
+Basically, this technique abuses overlay feature in Steam and it allows you to render anything in completely invisible state on your stream.
 This way you can stream any hacky stuff without letting viewers know that you're cheating.
 
 # :fire: Give it a shot!
